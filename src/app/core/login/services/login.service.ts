@@ -13,8 +13,8 @@ export class LoginService {
 
   // Iniciar sesión
   login(email: string, contrasenia: string): Observable<any> {
-    return this.http
-      .post<any>(`${this.baseUrl}`, { email, contrasenia })
+    const url = `http://localhost:8090/admin/login?email=${email}&contrasenia=${contrasenia}`;
+  return this.http.post<any>(url, {});
   }
 
  
