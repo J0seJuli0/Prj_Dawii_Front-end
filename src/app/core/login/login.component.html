@@ -1,0 +1,53 @@
+<div class="login-container">
+  <h2>Bienvenido</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Correo Electrónico -->
+    <div class="form-group">
+      <label for="email">Correo Electrónico:</label>
+      <span class="p-input-icon-left">
+        <i class="pi pi-envelope"></i>
+        <input pInputText id="email" formControlName="email" type="email"
+               placeholder="Ingrese su correo" />
+      </span>
+    </div>
+
+    <!-- Contraseña -->
+    <div class="form-group">
+      <label for="contrasenia">Contraseña:</label>
+      <span class="p-input-icon-left p-input-icon-right">
+        <i class="pi pi-lock"></i>
+        <input 
+          pInputText
+          id="contrasenia" 
+          formControlName="contrasenia" 
+          [type]="showPassword ? 'text' : 'password'" 
+          placeholder="Ingrese su contraseña" />
+        <i 
+          class="pi iconopass" 
+          [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'" 
+          (click)="togglePasswordVisibility()" 
+          style="cursor: pointer; right: 10px; position: absolute;">
+        </i>
+      </span>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Botón Ingresar -->
+    <div class="form-group">
+      <button pButton type="submit" label="Ingresar" 
+              icon="pi pi-sign-in" 
+              class="p-button-rounded p-button-primary"
+              [disabled]="loginForm.invalid || loading">
+      </button>
+    </div>
+  </form>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="loading-overlay">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>

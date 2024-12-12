@@ -1,0 +1,134 @@
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  z-index: 1000; /* Asegura que el spinner esté encima de todo */
+}
+
+/* General container */
+.login-container {
+  max-width: 400px;
+  margin-left: 40%;
+  margin-top: 150px;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+h2 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+/* Labels */
+label {
+  display: block;
+  text-align: left;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* Contenedor del input con ícono */
+.p-input-icon-left {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Estilo del input */
+.p-input-icon-left input {
+  width: 100%;
+  padding: 10px 35px; /* Ajuste para que el ícono no se sobreponga */
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Ajustes del ícono */
+.p-input-icon-left i {
+  position: absolute;
+  left: 10px; /* Coloca el ícono dentro del input */
+  color: #888;
+  font-size: 1.2em;
+}
+
+.iconopass{
+  margin-left: 85%;
+  width: 10px;
+}
+
+
+
+/* Efecto hover y focus del input */
+.p-input-icon-left input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #d9534f;
+  font-size: 0.85em;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Button */
+.p-button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.p-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.p-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    margin: 5% auto;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+}

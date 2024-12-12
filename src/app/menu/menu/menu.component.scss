@@ -1,0 +1,21 @@
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeng/resources/primeng.min.css";
+.sidebar-container {
+    height: 100vh; /* Altura completa */
+    background-color: #f4f5f7; /* Color de fondo claro */
+    border-right: 1px solid #ddd; /* Línea separadora */
+    padding: 1rem;
+    overflow-y: auto; /* Desplazamiento vertical */
+    font-family: Arial, sans-serif;
+  }
+  
+  ::ng-deep .p-panelmenu .p-panelmenu-header .p-menuitem-link {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  ::ng-deep .p-panelmenu .p-menuitem-icon {
+    margin-right: 0.5rem;
+  }
+  
