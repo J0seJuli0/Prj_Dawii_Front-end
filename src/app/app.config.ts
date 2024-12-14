@@ -7,6 +7,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export const appConfig: ApplicationConfig = {
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     ReactiveFormsModule,
-    PanelMenuModule
+    PanelMenuModule, provideAnimationsAsync()
     
   ]
 };
