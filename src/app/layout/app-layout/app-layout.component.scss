@@ -1,0 +1,18 @@
+/* app-layout.component.scss */
+.layout-container {
+    display: flex;
+    height: 100vh;  /* Ocupa toda la altura de la pantalla */
+  }
+  
+  .sidebar-container {
+    width: 250px;  /* Ajusta el tamaño del menú lateral */
+    background-color: #f4f4f4;
+    height: 100vh;  /* El menú ocupará toda la altura */
+  }
+  
+  .content-container {
+    flex-grow: 1;  /* El contenido ocupará el espacio restante */
+    padding: 20px;
+    overflow-y: auto;  /* Para permitir el desplazamiento si el contenido es largo */
+  }
+  

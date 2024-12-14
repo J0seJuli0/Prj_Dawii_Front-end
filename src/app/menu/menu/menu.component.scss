@@ -1,6 +1,8 @@
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/saga-blue/theme.css";
 @import "primeng/resources/primeng.min.css";
+
+/* Estilos para el contenedor principal del sidebar */
 .sidebar-container {
     height: 100vh; /* Altura completa */
     background-color: #f4f5f7; /* Color de fondo claro */
@@ -8,14 +10,40 @@
     padding: 1rem;
     overflow-y: auto; /* Desplazamiento vertical */
     font-family: Arial, sans-serif;
-  }
-  
-  ::ng-deep .p-panelmenu .p-panelmenu-header .p-menuitem-link {
+}
+
+/* Estilos para el encabezado con el logo y texto */
+.menu-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1e3d58; /* Fondo del encabezado */
+    color: white;
+    margin-bottom: 1rem; /* Espacio entre el encabezado y el menú */
+}
+
+.menu-header .logo {
+    width: 40px; /* Tamaño de la imagen */
+    height: 40px;
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.menu-header .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Estilos para los elementos del menú */
+::ng-deep .p-panelmenu .p-panelmenu-header .p-menuitem-link {
     color: #333;
     font-weight: bold;
-  }
-  
-  ::ng-deep .p-panelmenu .p-menuitem-icon {
+}
+
+::ng-deep .p-panelmenu .p-menuitem-icon {
     margin-right: 0.5rem;
-  }
-  
+}
+
+/* Estilos opcionales adicionales */
+.p-panelMenu {
+    background-color: #fff; /* Fondo blanco para el panel de menú */
+}

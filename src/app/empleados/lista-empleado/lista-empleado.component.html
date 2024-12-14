@@ -1,0 +1,33 @@
+<div *ngIf="loading">Cargando empleados...</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+  <!-- ID Empleado -->
+  <ng-container matColumnDef="idEmpleado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Empleado </th>
+    <td mat-cell *matCellDef="let empleado"> {{ empleado.idEmpleado }} </td>
+  </ng-container>
+
+  <!-- Nombres -->
+  <ng-container matColumnDef="nombres">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+    <td mat-cell *matCellDef="let empleado"> {{ empleado.nombres }} </td>
+  </ng-container>
+
+  <!-- Apellidos -->
+  <ng-container matColumnDef="apellidos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+    <td mat-cell *matCellDef="let empleado"> {{ empleado.apellidos }} </td>
+  </ng-container>
+
+  <!-- Documento de Identidad -->
+  <ng-container matColumnDef="docIdentidad">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Documento </th>
+    <td mat-cell *matCellDef="let empleado"> {{ empleado.docIdentidad }} </td>
+  </ng-container>
+
+  <!-- Filas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
