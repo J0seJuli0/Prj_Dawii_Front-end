@@ -5,6 +5,7 @@ import { ListaEmpleadosComponent } from './empleados/lista-empleado/lista-emplea
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';  
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirige a login como vista principal
   { path: 'login', component: LoginComponent }, 
   {
     path: '',
@@ -12,8 +13,7 @@ export const routes: Routes = [
     children: [
       { path: 'vista-admin', component: VistaAdminComponent }, 
       { path: 'empleados', component: ListaEmpleadosComponent },  
-      { path: '', redirectTo: 'vista-admin', pathMatch: 'full' },  
     ]
   },
-  { path: '**', redirectTo: 'login' }, 
+  { path: '**', redirectTo: 'login' }, // Ruta wildcard que redirige a login
 ];
