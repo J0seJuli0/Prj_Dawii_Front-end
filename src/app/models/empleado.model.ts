@@ -7,7 +7,7 @@ export interface EmpleadoDTO {
   fechaNacimiento: Date;
   idDocumento: TipoDocumentoDTO;
   docIdentidad: string;
-  salario: number;
+  salario: number; 
   fechaIngreso: Date;
   estado: number;
   fechaRegistro: Date;

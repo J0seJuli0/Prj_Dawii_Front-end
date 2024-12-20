@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { EmpleadoDTO } from '../models/empleado.model';
 import { RolDTO } from '../models/rol';
 import { TipoDocumentoDTO } from '../models/tipo-documento';
-import { UsuariosSistemaDTO } from '../models/usuarios-sistema';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +23,13 @@ export class EmpleadosService {
     return this.http.get<RolDTO[]>(`${this.apiUrl}/rol/listarrol`);
   }
 
+  actualizarRol(idUsuario: string, idRol: string): Observable<void> {
+    const body = { idUsuario, idRol };
+    return this.http.put<void>(`${this.apiUrl}/usuario/actualizar-rol`, body);
+  }
+
   listarTiposDocumento(): Observable<TipoDocumentoDTO[]> {
     return this.http.get<TipoDocumentoDTO[]>(`${this.apiUrl}/tipo_documento/listartipodocumento`);
   }
 
-  listarUsuariosSistema(): Observable<UsuariosSistemaDTO[]> {
-    return this.http.get<UsuariosSistemaDTO[]>(`${this.apiUrl}/usuarios_sistema/listarusuariosistema`);
-  }
 }

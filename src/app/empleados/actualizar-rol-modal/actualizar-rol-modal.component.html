@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Actualizar Rol</h1>
+<div mat-dialog-content>
+  <!-- Mostrar el ID del empleado de forma deshabilitada -->
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>ID del Empleado</mat-label>
+    <input matInput [value]="idEmpleado" disabled>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Seleccionar Rol</mat-label>
+    <mat-select [(value)]="selectedRolId" (selectionChange)="onRolSelect($event)">
+      <mat-option *ngFor="let rol of roles" [value]="rol.idRol">
+        {{ rol.rol }} 
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardar()" [disabled]="!selectedRolId">Guardar</button>
+</div>
