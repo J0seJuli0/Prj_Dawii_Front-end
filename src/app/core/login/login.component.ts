@@ -7,6 +7,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MessageModule } from 'primeng/message';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     ButtonModule,
     InputTextModule,
     PasswordModule,
-    ProgressSpinnerModule,
+    ProgressSpinnerModule ,
+    MessageModule
+  
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'], // Nota: Usando 'styleUrls'

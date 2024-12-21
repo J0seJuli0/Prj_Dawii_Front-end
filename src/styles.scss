@@ -1,14 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importaciones PrimeNG */
 @import '../node_modules/primeng/resources/primeng.min.css';
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
-@import "../node_modules/primeng/resources/primeng.min.css";
-@import "../node_modules/primeflex/primeflex.css";
-@import "../node_modules/primeicons/primeicons.css";
-@import "primeicons/primeicons.css";
-@import "primeng/resources/themes/saga-blue/theme.css";
-@import "primeng/resources/primeng.min.css";
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import '../node_modules/primeng/resources/themes/lara-light-blue/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeflex/primeflex.css';
+@import '../node_modules/primeicons/primeicons.css';
+@import 'primeicons/primeicons.css';
+@import 'primeng/resources/themes/saga-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Estilos globales */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(270deg, #1d3557, #457b9d, #a8dadc, #f1faee, #e63946);
+  background-size: 1000% 1000%;
+  animation: gradientAnimation 15s ease infinite;
+
+  /* Estilo adicional para body */
+  body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+}
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

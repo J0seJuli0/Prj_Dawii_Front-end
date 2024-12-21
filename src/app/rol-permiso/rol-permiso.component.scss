@@ -1,0 +1,33 @@
+:host ::ng-deep {
+    .card {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: var(--surface-card);
+      border-radius: 10px;
+      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    }
+  
+    .field {
+      margin-bottom: 1.5rem;
+    }
+  
+    .p-button {
+      margin-right: .5rem;
+    }
+  
+    .p-tree {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+  
+    .p-dialog .p-dialog-content {
+      padding: 2rem;
+    }
+  
+    .p-table {
+      .p-button-rounded {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }

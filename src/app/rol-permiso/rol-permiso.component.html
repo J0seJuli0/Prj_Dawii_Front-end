@@ -1,1 +1,77 @@
-<p>rol-permiso works!</p>
+<div class="card">
+    <p-toast></p-toast>
+    
+    <!-- Roles Table -->
+    <p-table [value]="roles" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Rol</th>
+          <th>Tipo Usuario</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rol>
+        <tr>
+          <td>{{rol.idRol}}</td>
+          <td>{{rol.rol}}</td>
+          <td>{{rol.tipoUsuario}}</td>
+          <td>{{rol.descripcion}}</td>
+          <td>
+            <button pButton icon="pi pi-key" class="p-button-rounded p-button-info mr-2"
+                    (click)="showPermissionsDialog(rol)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  
+    <!-- Add New Role Button -->
+    <div class="mt-3">
+      <button pButton label="Nuevo Rol" icon="pi pi-plus" 
+              (click)="showNewRolDialog()"></button>
+    </div>
+  
+    <!-- New Role Dialog -->
+    <p-dialog [(visible)]="displayNewRolDialog" header="Nuevo Rol" 
+              [style]="{width: '450px'}" [modal]="true">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="rol">Rol</label>
+          <input type="text" pInputText id="rol" [(ngModel)]="newRol.rol" required />
+        </div>
+        <div class="field">
+          <label for="tipoUsuario">Tipo Usuario</label>
+          <input type="number" pInputText id="tipoUsuario" [(ngModel)]="newRol.tipoUsuario" min="1" />
+        </div>
+        <div class="field">
+          <label for="descripcion">Descripción</label>
+          <textarea pInputTextarea id="descripcion" [(ngModel)]="newRol.descripcion" required></textarea>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideNewRolDialog()"></button>
+        <button pButton label="Guardar" icon="pi pi-check" class="p-button-text" (click)="saveNewRol()"></button>
+      </ng-template>
+    </p-dialog>
+  
+    <!-- Permissions Dialog -->
+    <p-dialog [(visible)]="displayPermissionsDialog" header="Asignar Permisos" 
+              [style]="{width: '70vw'}" [modal]="true">
+      <div class="grid">
+        <div class="col-12">
+          <h3>Permisos para rol: {{selectedRol?.rol}}</h3>
+          <p-tree [value]="menuNodes" selectionMode="checkbox"
+                  [(selection)]="selectedNodes" [propagateSelectionUp]="true"
+                  [propagateSelectionDown]="true"></p-tree>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" icon="pi pi-times" class="p-button-text" 
+                (click)="hidePermissionsDialog()"></button>
+        <button pButton label="Guardar" icon="pi pi-check" class="p-button-text" 
+                (click)="savePermissions()"></button>
+      </ng-template>
+    </p-dialog>
+  </div>
+  
