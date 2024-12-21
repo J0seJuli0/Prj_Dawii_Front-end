@@ -1,0 +1,49 @@
+<div class="card">
+    <h3>Listado de Menús</h3>
+    <p-table [value]="menus" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-menu>
+        <tr>
+          <td>{{ menu.nombreMenu }}</td>
+          <td>
+            <button pButton label="Ver Submenús" (click)="loadSubmenus(menu)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  
+    <div *ngIf="selectedMenu">
+      <h4>Submenús de: {{ selectedMenu.nombreMenu }}</h4>
+      <p-table [value]="submenus" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-submenu>
+          <tr>
+            <td>{{ submenu.nombreSubMenu }}</td>
+            <td>
+              <p-toggleButton
+                [(ngModel)]="submenu.activo"
+                (onChange)="updateSubmenuStatus(submenu)"
+                onLabel="Activo"
+                offLabel="Inactivo">
+              </p-toggleButton>
+            </td>
+            <td>
+              <button pButton icon="pi pi-refresh" label="Actualizar"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  

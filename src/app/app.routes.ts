@@ -4,6 +4,7 @@ import { VistaAdminComponent } from './features/vista-admin/vista-admin/vista-ad
 import { ListaEmpleadosComponent } from './empleados/lista-empleado/lista-empleado.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';  
 import { RolPermisoComponent } from './rol-permiso/rol-permiso.component';
+import { MenuRolComponent } from './menu-rol/menu-rol.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirige a login como vista principal
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: 'vista-admin', component: VistaAdminComponent }, 
       { path: 'empleados', component: ListaEmpleadosComponent },
       { path: 'rol-permiso', component: RolPermisoComponent },
+      { path: 'menu-rol', component: MenuRolComponent },
 
     ]
   },

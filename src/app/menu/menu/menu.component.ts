@@ -119,6 +119,11 @@ export class MenuComponent {
           label: 'Gestionar Roles',
           icon: 'pi pi-cog',
           command: () => this.router.navigate(['/rol-permiso'])
+        },
+        {
+          label: 'Gestion de menus',
+          icon: 'pi pi-cog',
+          command: () => this.router.navigate(['/menu-rol'])
         }
       ]
     }

@@ -23,6 +23,7 @@ export interface SubMenuDTO {
   estadoSubMenu: number;
   fechaCreacion: Date;
   fechaModificacion: Date;
+  activo: boolean;
 }
 
 export interface PermisosRolDTO {

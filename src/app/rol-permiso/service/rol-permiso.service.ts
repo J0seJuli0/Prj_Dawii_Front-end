@@ -13,13 +13,18 @@ export class RolPermisoService {
   constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token') || ''; // Evitar null
+    const token = localStorage.getItem('token') || '';
     return new HttpHeaders({
-      'Authorization': `Bearer ${token.trim()}`, // Agregar Bearer correctamente
-      'Content-Type': 'application/json'
+        'Authorization': `Bearer ${token.trim()}`,
+        'Content-Type': 'application/json'
     });
-  }
-
+}
+getSubmenusByMenu(menuId: number): Observable<SubMenuDTO[]> {
+  return this.http.get<SubMenuDTO[]>(`${this.baseUrl}/menus/${menuId}/submenus`);
+}
+updateSubmenuStatus(submenuId: number, activo: boolean): Observable<void> {
+  return this.http.put<void>(`${this.baseUrl}/submenus/${submenuId}/status`, { activo });
+}
   getRoles(): Observable<RolDTO[]> {
     return this.http.get<RolDTO[]>(`${this.baseUrl}/rol/listarrol`, { headers: this.getHeaders() });
   }

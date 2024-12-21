@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from 'primeng/api';
 import { RolPermisoService } from './service/rol-permiso.service';
-import { MenuDTO, PermisosRolDTO, RolDTO, SubMenuDTO } from '../core/interfaces/interfaces';
+import { ActualizarPermisosRequest, MenuDTO, PermisosRolDTO, RolDTO, SubMenuDTO } from '../core/interfaces/interfaces';
 
 @Component({
   selector: 'app-rol-permiso',
@@ -117,14 +117,19 @@ export class RolPermisoComponent implements OnInit {
 
   transformPermissionsToNodes(permissions: PermisosRolDTO[]) {
     const submenuIds = permissions.map(p => p.idSubmenu);
-    return this.menuNodes.filter(node =>
-      node.children.some((child: any) => submenuIds.includes(child.data.idSubMenus))
-    );
+    return this.menuNodes.reduce((nodes, node) => {
+      const selectedChildren = node.children.filter((child: any) => submenuIds.includes(child.data.idSubMenus));
+      if (selectedChildren.length) {
+        nodes.push({ ...node, children: selectedChildren });
+      }
+      return nodes;
+    }, []);
   }
 
   hideNewRolDialog() {
     this.displayNewRolDialog = false;
   }
+
   hidePermissionsDialog() {
     this.displayPermissionsDialog = false;
     this.selectedRol = null;
@@ -137,17 +142,28 @@ export class RolPermisoComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Seleccione un rol válido' });
       return;
     }
-
+  
+    // Extraer los permisos nuevos a partir de los nodos seleccionados
     const newPermissions = this.selectedNodes
-      .filter(node => node.key.startsWith('submenu_'))
-      .map(node => parseInt(node.data.idSubMenus, 10));
-
-    this.rolesService.updateRolPermissions(this.selectedRol.idRol, this.currentPermissions, newPermissions)
+      .filter(node => node.key.startsWith('submenu_')) // Filtrar solo submenús
+      .map(node => parseInt(node.data.idSubMenus, 10)); // Obtener IDs de submenús
+  
+    // Construir el objeto de solicitud
+    const request: ActualizarPermisosRequest = {
+      idRol: this.selectedRol.idRol,
+      idSubmenuActual: this.currentPermissions || [],
+      idSubmenuNuevo: newPermissions || []
+    };
+  
+    console.log('Request Body:', JSON.stringify(request)); // Depuración
+  
+    // Llamar al servicio para actualizar permisos
+    this.rolesService.updateRolPermissions(request.idRol, request.idSubmenuActual, request.idSubmenuNuevo)
       .subscribe({
         next: () => {
           this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Permisos actualizados correctamente' });
           this.displayPermissionsDialog = false;
-          this.loadInitialData();
+          this.loadInitialData(); // Recargar datos
         },
         error: err => {
           console.error('Error al actualizar permisos:', err);
@@ -155,11 +171,11 @@ export class RolPermisoComponent implements OnInit {
         }
       });
   }
+  
 
   generateNextId(): string {
     if (!this.roles.length) return 'R01';
     const lastId = Math.max(...this.roles.map(role => parseInt(role.idRol.substring(1), 10)));
     return `R${(lastId + 1).toString().padStart(2, '0')}`;
   }
-  
 }
