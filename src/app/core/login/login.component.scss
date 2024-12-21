@@ -82,13 +82,15 @@ label {
 
 .p-input-icon-left input:focus {
   border-color: #007bff;
+  
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 /* Icono de contraseña */
 .icon-toggle-password {
   position: absolute;
-  right: -250px;
+  width: 20px;
+  margin-left: 270px;
   top: 65%;
   transform: translateY(-50%);
   color: #aaa;
